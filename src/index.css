@@ -1,0 +1,134 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700&family=Playfair+Display:wght@600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 40 33% 97%;
+    --foreground: 30 10% 12%;
+
+    --card: 40 30% 99%;
+    --card-foreground: 30 10% 12%;
+
+    --popover: 40 30% 99%;
+    --popover-foreground: 30 10% 12%;
+
+    --primary: 37 68% 47%;
+    --primary-foreground: 40 33% 97%;
+
+    --secondary: 150 30% 30%;
+    --secondary-foreground: 40 33% 97%;
+
+    --muted: 40 20% 93%;
+    --muted-foreground: 30 8% 46%;
+
+    --accent: 150 30% 30%;
+    --accent-foreground: 40 33% 97%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 37 20% 88%;
+    --input: 37 20% 88%;
+    --ring: 37 68% 47%;
+
+    --radius: 0.75rem;
+
+    --sidebar-background: 0 0% 98%;
+    --sidebar-foreground: 240 5.3% 26.1%;
+    --sidebar-primary: 240 5.9% 10%;
+    --sidebar-primary-foreground: 0 0% 98%;
+    --sidebar-accent: 240 4.8% 95.9%;
+    --sidebar-accent-foreground: 240 5.9% 10%;
+    --sidebar-border: 220 13% 91%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+
+    --font-heading: 'Playfair Display', serif;
+    --font-body: 'DM Sans', sans-serif;
+  }
+
+  .dark {
+    --background: 30 10% 8%;
+    --foreground: 40 33% 97%;
+    --card: 30 10% 10%;
+    --card-foreground: 40 33% 97%;
+    --popover: 30 10% 10%;
+    --popover-foreground: 40 33% 97%;
+    --primary: 37 68% 47%;
+    --primary-foreground: 40 33% 97%;
+    --secondary: 150 30% 30%;
+    --secondary-foreground: 40 33% 97%;
+    --muted: 30 10% 15%;
+    --muted-foreground: 30 8% 60%;
+    --accent: 150 30% 30%;
+    --accent-foreground: 40 33% 97%;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+    --border: 30 10% 18%;
+    --input: 30 10% 18%;
+    --ring: 37 68% 47%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading);
+  }
+}
+
+@layer utilities {
+  .scrollbar-hide {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+  .scrollbar-hide::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+/* Admin responsive table wrapper */
+.admin-table-wrap {
+  @apply overflow-x-auto rounded-lg border bg-card;
+  -webkit-overflow-scrolling: touch;
+}
+
+.admin-table-wrap table {
+  @apply min-w-[600px];
+}
+
+/* Make all tables in admin scrollable on mobile */
+@media (max-width: 768px) {
+  .admin-table-wrap table,
+  [class*="CardContent"] table,
+  .rounded-md.border > table {
+    @apply min-w-[500px];
+  }
+
+  [class*="CardContent"],
+  .rounded-md.border:has(table) {
+    @apply overflow-x-auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  /* Compact admin text on mobile */
+  main table td,
+  main table th {
+    @apply text-xs px-2 py-1.5;
+  }
+
+  main h1 {
+    @apply text-xl;
+  }
+}
+
